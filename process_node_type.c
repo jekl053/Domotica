@@ -774,6 +774,7 @@ void log_to_firebase(char *node) {
 	
 	sprintf(query, "SELECT * FROM nodes WHERE id = '%s'", node);
 
+	
 	res = query_res_db(con, query);
 	row = mysql_fetch_row(res);
 
