@@ -774,11 +774,10 @@ void log_to_firebase(char *node) {
 	
 	sprintf(query, "SELECT * FROM nodes WHERE id = '%s'", node);
 
-	// check
 	res = query_res_db(con, query);
 	row = mysql_fetch_row(res);
 
-	sprintf(cmdtxt,"curl -X PUT -d '{ \"value\": %s, \"text\": \"%s\", \"oms\": \"%s\", \"locatie\": \"%s\" }'  'https://blazing-heat-4389.firebaseio.com/nodes/%s.json'", row[5], row[6], row[1], row[7], row[0] );
+	sprintf(cmdtxt,"curl -X PUT -d '{ \"value\": %s, \"text\": \"%s\", \"oms\": \"%s\", \"locatie\": \"%s\" }'  'https://blazing-heat-4389.firebaseio.com/nodes/%s.json' > /dev/null", row[5], row[6], row[1], row[7], row[0] );
 	system(cmdtxt);
 
 }
